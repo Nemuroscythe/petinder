@@ -12,7 +12,8 @@ export default function ProfileGallery() {
             <div className="gallery">
                 {pets.map(pet => (
                         <div className="gallery-pet fader" key={pet.id}>
-                            <img className="profile-picture" src={"https://pettinder.herokuapp.com/" + pet.image} alt="pet-picture"/>
+                            <img className="profile-picture" src={"https://pettinder.herokuapp.com/" + pet.image}
+                                 alt="pet-picture"/>
                             <div className="overlay">
                                 <div className="overlay-text">{pet.name}
                                 </div>
