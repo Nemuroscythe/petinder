@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import getPets from "../api/PetService";
+import {getPets} from "../api/PetService";
 
 export default function ProfileGallery() {
     const [pets, setPets] = useState([]);
