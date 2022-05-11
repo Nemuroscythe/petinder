@@ -18,7 +18,11 @@ export default function ProfileGallery() {
     return (<>
             <div id="gallery" className="col-md-9">
                 <div className="gallery">
-                    {filteredPets.map(pet => (
+                    {filteredPets
+                        .sort((first, second) =>
+                            first.name.localeCompare(second.name)
+                        )
+                        .map(pet => (
                             <div className="gallery-pet fader" key={pet.id}>
                                 <img className="profile-picture" src={"https://pettinder.herokuapp.com/" + pet.image}
                                      alt="pet-picture"/>
