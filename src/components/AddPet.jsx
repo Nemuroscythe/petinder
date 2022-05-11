@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {addPets} from "../api/PetService";
 import Pet from "../model/Pet";
 
-export default function AddPet() {
+export default function AddPet({triggerParentUpdate}) {
 
     function handleSubmit(pet) {
         console.log('INFO : button create pet pressed!')
@@ -12,7 +12,19 @@ export default function AddPet() {
             pet.picture,
             pet.profileText,
             0);
-        addPets(petToCreate).then((result) => console.log(result));
+        addPets(petToCreate)
+            .then((result) => console.log(result))
+            .then(() => triggerParentUpdate('toUpdate'))
+            .then(() => clearForm())
+            .then(() => triggerParentUpdate('Updated'))
+        ;
+    }
+
+    function clearForm(){
+        pet.name = '';
+        pet.kind = '';
+        pet.image = '';
+        pet.profileText = '';
     }
 
     let [pet = {name: '', kind: '', picture: '', profileText: ''}, setPet] = useState({});

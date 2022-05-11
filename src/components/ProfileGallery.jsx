@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {getPets} from "../api/PetService";
+import AddPet from "./AddPet";
 
 export default function ProfileGallery() {
+
+    const [componentState, updateState] = useState('Updated');
+
     const [pets, setPets] = useState([]);
     useEffect(() => {
         getPets().then((result) => setPets(result.data));
@@ -54,6 +58,7 @@ export default function ProfileGallery() {
                     </div>
                 </div>
             </div>
+            <AddPet triggerParentUpdate={updateState}/>
         </>
     );
 }

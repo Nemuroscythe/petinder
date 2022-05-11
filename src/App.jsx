@@ -11,7 +11,6 @@ function App() {
             <div className="container-fluid">
                 <div className="row">
                     <ProfileGallery/>
-                    <AddPet />
                 </div>
             </div>
             <Footer/>
