@@ -4,6 +4,6 @@ export function getPets(){
     return apiClient.get('pets')
 }
 
-export function addPets(){
-    return apiClient.post('pets')
+export function addPets(pet){
+    return apiClient.post('pets', pet)
 }

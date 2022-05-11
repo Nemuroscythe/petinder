@@ -1,8 +1,21 @@
 import React, {useState} from "react";
+import {addPets} from "../api/PetService";
+import Pet from "../model/Pet";
 
 export default function AddPet() {
-    let pet = {name, kind, picture, profileText};
-    [pet, setPet] = useState({});
+
+    function handleSubmit(pet) {
+        console.log('INFO : button create pet pressed!')
+        let petToCreate = new Pet(0,
+            pet.name,
+            pet.kind,
+            pet.picture,
+            pet.profileText,
+            0);
+        addPets(petToCreate).then((result) => console.log(result));
+    }
+
+    let [pet = {name: '', kind: '', picture: '', profileText: ''}, setPet] = useState({});
 
     return (
         <section className="tiny-dialog fader" id="petProfile">
@@ -15,7 +28,12 @@ export default function AddPet() {
                                name="name"
                                type="text"
                                value={pet.name}
-                               onChange={handleChange}/>
+                               onChange={event => setPet({
+                                   name: event.target.value,
+                                   kind: pet.kind,
+                                   picture: pet.picture,
+                                   profileText: pet.profileText
+                               })}/>
                     </label>
                     <br/>
                     <label>
@@ -24,7 +42,12 @@ export default function AddPet() {
                                name="kind"
                                type="text"
                                value={pet.kind}
-                               onChange={handleChange}/>
+                               onChange={event => setPet({
+                                   name: pet.name,
+                                   kind: event.target.value,
+                                   picture: pet.picture,
+                                   profileText: pet.profileText
+                               })}/>
                     </label>
                     <br/>
                     <label>
@@ -33,7 +56,12 @@ export default function AddPet() {
                                name="image"
                                type="text"
                                value={pet.image}
-                               onChange={handleChange}/>
+                               onChange={event => setPet({
+                                   name: pet.name,
+                                   kind: pet.kind,
+                                   picture: event.target.value,
+                                   profileText: pet.profileText
+                               })}/>
                     </label>
                     <br/>
                     <label>
@@ -42,12 +70,18 @@ export default function AddPet() {
                                name="profileText"
                                type="text"
                                value={pet.profileText}
-                               onChange={handleChange}/>
+                               onChange={event => setPet({
+                                   name: pet.name,
+                                   kind: pet.kind,
+                                   picture: pet.picture,
+                                   profileText: event.target.value
+                               })}/>
                     </label>
                     <br/>
                 </form>
                 <button
-                    className="btn btn-primary pull-right">
+                    className="btn btn-primary pull-right"
+                    onClick={() => handleSubmit(pet)}>
                     Create Pet
                 </button>
             </div>
