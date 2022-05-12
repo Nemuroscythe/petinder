@@ -1,14 +1,19 @@
 import React from "react";
-import {Link, useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {addPetPopularity} from "../api/PetService";
+import {Link} from "react-router-dom";
 
 export default function SetupDate() {
 
+    const navigate = useNavigate();
     const location = useLocation();
     const {selectedPet} = location.state.selectedPet;
 
-    function incrementPopularity() {
-        addPetPopularity(selectedPet.name).then(result => console.log('Popularity increase :' + result));
+    function OnSubmitLetsPlay(event) {
+        event.preventDefault();
+        addPetPopularity(selectedPet.name)
+            .then(result => console.log('Popularity increase :' + result))
+            .then(() => navigate(`/`));
     }
 
     return (<>
@@ -29,17 +34,14 @@ export default function SetupDate() {
                             </div>
                             <br/>
                             <div className="clearfix">
-                                {/*<form onSubmit="play-function">*/}
+                                <form onSubmit={OnSubmitLetsPlay}>
                                     <Link to="/">
                                         <button className="btn btn-primary pull-right" type="button">Cancel</button>
                                     </Link>
-                                    <Link to="/">
-                                        <button className="btn btn-primary pull-right"
-                                                onClick={() => incrementPopularity()}
-                                                type="submit">Let us Play
-                                        </button>
-                                    </Link>
-                                {/*</form>*/}
+                                    <button className="btn btn-primary pull-right"
+                                            type="submit">Let us Play
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
