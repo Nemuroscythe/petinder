@@ -3,7 +3,7 @@ import React from "react";
 export default function PetInformation({selectedPet}) {
 
     const {name, profileText, popularity, rest} = {...selectedPet};
-    return ( <>
+    return (<>
             {selectedPet &&
                 (<div className="gallery-detail">
                     <section className="tiny-dialog fader" id="petProfile">
@@ -23,5 +23,5 @@ export default function PetInformation({selectedPet}) {
                     </section>
                 </div>)
             }</>
-        )
+    )
 }
