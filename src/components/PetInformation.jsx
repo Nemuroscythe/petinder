@@ -1,12 +1,12 @@
 import React from "react";
 import {deletePet} from "../api/PetService";
 
-export default function PetInformation({selectedPet, triggerParentUpdate}) {
+export default function PetInformation({selectedPet, triggerParentUpdate, setSelectedPet}) {
 
     function handleDelete(){
         deletePet(selectedPet.id)
             .then(() => triggerParentUpdate(new Date()))
-            .then(() => selectedPet = undefined);
+            .then(() => setSelectedPet(null));
     }
 
     const {name, profileText, popularity, rest} = {...selectedPet};
