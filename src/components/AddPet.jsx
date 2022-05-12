@@ -14,9 +14,8 @@ export default function AddPet({triggerParentUpdate}) {
             0);
         addPets(petToCreate)
             .then((result) => console.log(result))
-            .then(() => triggerParentUpdate('toUpdate'))
+            .then(() => triggerParentUpdate('Update :' + new Date()))
             .then(() => clearForm())
-            .then(() => triggerParentUpdate('Updated'))
         ;
     }
 

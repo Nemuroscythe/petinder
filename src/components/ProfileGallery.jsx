@@ -1,15 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {getPets} from "../api/PetService";
 import AddPet from "./AddPet";
+import PetInformation from "./PetInformation";
 
 export default function ProfileGallery() {
 
-    const [componentState, updateState] = useState('Updated');
+    //Allow us to update the whole profile gallery
+    const [componentState, updateState] = useState('');
 
+    const [selectedPet, setSelectedPet] = useState(null);
+
+    //Show the profile gallery
     const [pets, setPets] = useState([]);
     useEffect(() => {
-        getPets().then((result) => setPets(result.data));
-    }, pets)
+        console.log('enter effect');
+        getPets().then((result) => setPets(result.data))
+            .then(() => console.log('reload'));
+    }, [componentState])
 
     let filteredPets;
     const [filterText, setFilterText] = useState([]);
@@ -27,7 +34,7 @@ export default function ProfileGallery() {
                             first.name.localeCompare(second.name)
                         )
                         .map(pet => (
-                            <div className="gallery-pet fader" key={pet.id}>
+                            <div className="gallery-pet fader" key={pet.id} onClick={() => setSelectedPet(pet)}>
                                 <img className="profile-picture" src={"https://pettinder.herokuapp.com/" + pet.image}
                                      alt="pet-picture"/>
                                 <div className="overlay">
@@ -59,6 +66,7 @@ export default function ProfileGallery() {
                 </div>
             </div>
             <AddPet triggerParentUpdate={updateState}/>
+            <PetInformation selectedPet={selectedPet}/>
         </>
     );
 }
