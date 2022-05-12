@@ -1,5 +1,6 @@
 import React from "react";
 import {deletePet} from "../api/PetService";
+import {Link} from "react-router-dom";
 
 export default function PetInformation({selectedPet, triggerParentUpdate, setSelectedPet}) {
 
@@ -27,6 +28,14 @@ export default function PetInformation({selectedPet, triggerParentUpdate, setSel
                         type="button">
                         Delete Pet
                         </button>
+
+                        <Link to="/setup-date" state={{ selectedPet: {selectedPet} }}>
+                            <button
+                                className="btn btn-primary pull-right"
+                                type="button">
+                                Reserve date
+                            </button>
+                        </Link>
                     </section>
                 </div>)
             }</>
