@@ -1,6 +1,13 @@
 import React from "react";
+import {deletePet} from "../api/PetService";
 
-export default function PetInformation({selectedPet}) {
+export default function PetInformation({selectedPet, triggerParentUpdate}) {
+
+    function handleDelete(){
+        deletePet(selectedPet.id)
+            .then(() => triggerParentUpdate(new Date()))
+            .then(() => selectedPet = undefined);
+    }
 
     const {name, profileText, popularity, rest} = {...selectedPet};
     return (<>
@@ -14,12 +21,12 @@ export default function PetInformation({selectedPet}) {
                             {popularity}
                         </p>
 
-                        {/*<button*/}
-                        {/*    className="btn btn-primary pull-right"*/}
-                        {/*    onClick={handleDelete()}*/}
-                        {/*type="button">*/}
-                        {/*Delete Pet*/}
-                        {/*</button>*/}
+                        <button
+                            className="btn btn-primary pull-right"
+                            onClick={() => handleDelete()}
+                        type="button">
+                        Delete Pet
+                        </button>
                     </section>
                 </div>)
             }</>
