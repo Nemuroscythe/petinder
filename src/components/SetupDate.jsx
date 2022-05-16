@@ -24,7 +24,7 @@ export default function SetupDate() {
                             <div className="clearfix">
                                 <div className="pull-left dialog-picture">
                                     <img
-                                        src={"https://pettinder.herokuapp.com/" + selectedPet.image}
+                                        src={"https://petinder-react-alen.herokuapp.com/" + selectedPet.image}
                                         className="profile-picture"
                                         alt={"Picture of " + selectedPet.name}
                                     />
