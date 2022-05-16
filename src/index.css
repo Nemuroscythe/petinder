@@ -12,9 +12,9 @@ code {
     monospace;
 }
 
-@import url(//fonts.googleapis.com/css?family=Gochi+Hand);
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,400,300,700);
-@import url(//fonts.googleapis.com/css?family=Lato:100italic); /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+@import url(https://fonts.googleapis.com/css?family=Gochi+Hand);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:100italic); /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
   display: block
 }
@@ -5850,7 +5850,7 @@ button.close {
 }
 
 .text-hide {
-  font: 0/0 a;
+  /*font: 0/0 a;*/
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -5867,7 +5867,7 @@ button.close {
 }
 
 @-ms-viewport {
-  width: device-width
+  /*width: ms-device-width;*/
 }
 
 .visible-lg, .visible-md, .visible-sm, .visible-xs, td.visible-lg, td.visible-md, td.visible-sm, td.visible-xs, th.visible-lg, th.visible-md, th.visible-sm, th.visible-xs, tr.visible-lg, tr.visible-md, tr.visible-sm, tr.visible-xs {
