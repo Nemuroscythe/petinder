@@ -64,9 +64,9 @@ export default function ProfileGallery() {
                         </section>
                     </div>
                 </div>
-            </div>
             <AddPet triggerParentUpdate={updateState}/>
             <PetInformation selectedPet={selectedPet} triggerParentUpdate={updateState} setSelectedPet={setSelectedPet}/>
+            </div>
         </>
     );
 }
