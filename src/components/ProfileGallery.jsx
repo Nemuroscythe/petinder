@@ -36,7 +36,7 @@ export default function ProfileGallery() {
                         .map(pet => (
                             <div className="gallery-pet fader" key={pet.id} onClick={() => setSelectedPet(pet)}>
                                 <img className="profile-picture" src={"https://pettinder.herokuapp.com/" + pet.image}
-                                     alt="pet-picture"/>
+                                     alt="pet"/>
                                 <div className="overlay">
                                     <div className="overlay-text">{pet.name}
                                     </div>

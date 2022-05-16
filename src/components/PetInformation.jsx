@@ -10,7 +10,7 @@ export default function PetInformation({selectedPet, triggerParentUpdate, setSel
             .then(() => setSelectedPet(null));
     }
 
-    const {name, profileText, popularity, rest} = {...selectedPet};
+    const {name, profileText, popularity} = {...selectedPet};
     return (<>
             {selectedPet &&
                 (<div className="gallery-detail">
